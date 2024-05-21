@@ -9,7 +9,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/formularioNotas',[QualificaciController::class,'create']);
-Route::post('/crearNota',[QualificaciController::class,'create'])->name('qualification.store');
-Route::get('/formularioEcuacion',[ResultController::class,'create']);
-Route::post('/crearEcuacion',[ResultController::class,'store'])->name('result.store');
+Route::get('/', function () {
+    return view('welcome');
+});
+
+
+Route::get('cursos/listar',[ProfesorController::class,'index'])->name('curso.index');
+Route::get('cursos/create',[ProfesorController::class,'create']);
+Route::post('cursos/store', [ProfesorController::class,'store'])->name('curso.store');
+Route::get('curso/{curso}',[ProfesorController::class,'show'])->name('curso.show');
+Route::put('curso/{curso}',[ProfesorController::class,'update'])->name('curso.update');
+Route::delete('curso/{curso}',[ProfesorController::class,'destroy'])->name('curso.destroy');
+Route::get('curso/{curso}/editar',[ProfesorController::class,'edit'])->name('curso.edit');
